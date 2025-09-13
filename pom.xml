@@ -9,23 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.genkins</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>spring-genkins</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>spring-genkins</name>
 	<description>Demo project for Jinkins integration</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<packaging>war</packaging>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
