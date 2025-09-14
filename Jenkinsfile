@@ -8,9 +8,14 @@ pipeline {
             }
         }
         stage("test") {
-                    steps {
-                        echo 'testing the applications....'
-                    }
+            when {
+                expression {
+                    BRANCH_NAME == 'dev' || BRANCH_NAME == 'master'
+                }
+            }
+            steps {
+                                    echo 'testing the applications....'
+                                }
                 }
                 stage("deploy") {
                             steps {
