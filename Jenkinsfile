@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     tools {
@@ -8,13 +10,21 @@ pipeline {
         booleanParam(name: 'executeTest', defaultValue: true, description: '')
     }
     stages {
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage("build") {
             steps {
-                echo 'building the applications....'
                 script {
+                    gv.buildApp()
+
                     if (isUnix()) {
                         sh 'mvn clean install'
-                        } else {
+                    } else {
                         bat 'mvn clean install'
                     }
                 }
@@ -27,12 +37,16 @@ pipeline {
                 }
             }
             steps {
-                echo 'testing the applications....'
+                script {
+                    gv.testApp()
+                }
             }
         }
         stage("deploy") {
             steps {
-                echo 'deploying the applications....'
+                script {
+                    gv.deployApp()
+                }
                 echo "deploying version ${params.VERSION}"
             }
         }
