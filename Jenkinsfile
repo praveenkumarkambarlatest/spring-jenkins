@@ -7,7 +7,13 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the applications....'
-                sh "mvn install"
+                script {
+                        if (isUnix()) {
+                            sh 'mvn clean install'
+                        } else {
+                            bat 'mvn clean install'
+                        }
+                    }
             }
         }
         stage("test") {
