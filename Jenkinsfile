@@ -33,6 +33,7 @@ pipeline {
         stage("deploy") {
             steps {
                 echo 'deploying the applications....'
+                echo "deploying version ${params.VERSION}"
             }
         }
     }
